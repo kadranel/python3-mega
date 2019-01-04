@@ -67,4 +67,4 @@ def enc_attr(attr, key):
 
 def dec_attr(attr, key):
     attr = aes_cbc_decrypt(attr, a32_to_str(key)).decode('utf-8').rstrip('\0')
-    return json.loads(attr[4:])
+    return json.loads(attr[4:]) if attr[:6] == 'MEGA{"' else False
